@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgiveness Banner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #f3f5f3, #868887);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Crying Faces in Background */
+        .crying-face-bg {
+            position: absolute;
+            font-size: 5em;
+            animation: cryBackgroundAnimation 5s infinite alternate;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .crying-face-bg:nth-child(1) {
+            top: 10%;
+            left: 10%;
+        }
+
+        .crying-face-bg:nth-child(2) {
+            top: 30%;
+            left: 50%;
+        }
+
+        .crying-face-bg:nth-child(3) {
+            top: 50%;
+            left: 80%;
+        }
+
+        @keyframes cryBackgroundAnimation {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(5px);
+            }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: red;
+            animation: floatHearts 4s ease-in-out infinite;
+        }
+
+        .heart:nth-child(1) {
+            top: 50%;
+            left: 10%;
+            animation-duration: 4s;
+        }
+
+        .heart:nth-child(2) {
+            top: 40%;
+            left: 30%;
+            animation-duration: 6s;
+        }
+
+        .heart:nth-child(3) {
+            top: 60%;
+            left: 60%;
+            animation-duration: 5s;
+        }
+
+        .heart:nth-child(4) {
+            top: 30%;
+            left: 80%;
+            animation-duration: 7s;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.2);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Main Banner */
+        .banner {
+            text-align: center;
+            color: white;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 2;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            opacity: 0;
+            animation: slideIn 2s ease-in-out forwards;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeInText 3s ease-in-out forwards 1.5s;
+        }
+
+        .crying-face {
+            font-size: 5em;
+            display: inline-block;
+            animation: cryAnimation 1.5s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cryAnimation {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(5px);
+            }
+        }
+
+        /* Flower Blooming Animation */
+        .flower-container {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .flower {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: red;
+            border-radius: 50%;
+            animation: bloom 5s ease-in-out infinite;
+        }
+
+        .flower::before,
+        .flower::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .flower::before {
+            top: -15px;
+            left: 0;
+        }
+
+        .flower::after {
+            left: -15px;
+            top: 0;
+        }
+
+        .stem {
+            position: absolute;
+            width: 5px;
+            height: 50px;
+            background: green;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: grow 5s ease-in-out infinite;
+        }
+
+        @keyframes grow {
+            from {
+                height: 0;
+            }
+
+            to {
+                height: 50px;
+            }
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+                bottom: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                bottom: 50px;
+            }
+        }
+
+        /* "I Love You" Message */
+        .love-message {
+            position: absolute;
+            font-size: 3em;
+            color: red;
+            top: 20%;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: loveMessageAnimation 3s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes loveMessageAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .crying-face {
+                font-size: 4em;
+            }
+
+            .banner {
+                padding: 40px;
+                max-width: 90%;
+            }
+
+            .flower-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .flower {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .crying-face {
+                font-size: 3.5em;
+            }
+
+            .banner {
+                padding: 30px;
+                max-width: 95%;
+            }
+
+            .flower {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Crying Faces -->
+    <div class="crying-face-bg">🥺</div>
+    <div class="crying-face-bg">😭</div>
+    <div class="crying-face-bg">🥺</div>
+
+    <!-- Main Banner -->
+    <div class="banner">
+        <div class="crying-face">🥺😭</div>
+        <h1>I'm Sorry, Husband 💔</h1>
+        <p>Please forgive me and talk to me... 🙏💞</p>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+
+    <!-- "I Love You" Message -->
+    <div class="love-message">I Love You 💖</div>
+
+    <!-- Flower Container -->
+    <div class="flower-container">
+        <div class="flower">
+            <div class="stem"></div>
+        </div>
+        <div class="flower">
+            <div class="stem"></div>
+        </div>
+        <div class="flower">
+            <div class="stem"></div>
+        </div>
+        <div class="flower">
+            <div class="stem"></div>
+        </div>
+    </div>
+</body>
+</html>
